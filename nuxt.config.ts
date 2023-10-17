@@ -81,6 +81,10 @@ export default defineNuxtConfig({
     twitter: "@sdnteja2",
   },
   app: {
+    pageTransition: {
+      name: 'page', // Nama transisi yang akan digunakan secara global
+      mode: 'out-in' // Mode transisi, dalam hal ini 'out-in'
+    },
     head: {
       templateParams: {
         separator: "-",

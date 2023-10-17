@@ -55,3 +55,12 @@
 .svgbawah {
   @apply relative before:left-0  overflow-hidden before:absolute before:top-0  before:bg-[url('/yes.svg')] before:bg-no-repeat before:bg-top md:before:bg-cover before:bg-contain before:w-full before:h-full before:-z-[1]  before:translate-y-1/2 before:transform;
 }
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
