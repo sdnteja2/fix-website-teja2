@@ -1,7 +1,6 @@
 <template>
   <!-- Hero -->
-  <div  v-editable="blok"
-  :class="secClasses">
+  <div v-editable="blok" :class="svgClass">
     <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
       <div class="mt-5 max-w-2xl text-center mx-auto">
         <div
@@ -18,8 +17,6 @@
   </div>
 </template>
 <script setup>
- const props = defineProps({ blok: Object })
-  const secClasses = computed(() => {
-    return props.blok.svg === 'svgkiri' ? 'svgkanan' : 'svgkiri'
-})
+  const props = defineProps({ blok: Object });
+  const { svgClass } = useSvg(ref(props.blok));
 </script>

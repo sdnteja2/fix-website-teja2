@@ -9,11 +9,11 @@
       </h3>
     </div>
     <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 my-8">
-      <ArticleCard
-        v-for="article in blok.articles"
-        :key="article.uuid"
-        :article="article.content"
-        :slug="article.full_slug" />
+      <ArtikelCard
+        v-for="artikel in blok.artikels"
+        :key="artikel.uuid"
+        :artikel="artikel.content"
+        :slug="artikel.full_slug" />
     </div>
   </div>
 </template>
