@@ -17,6 +17,7 @@
         <div class="flex items-center">
           <div class="sm:block hidden space-x-2 mr-4">
             <NuxtLink class="nav" to="/">Home </NuxtLink>
+            <NuxtLink class="nav" to="/guru">Guru </NuxtLink>
             <NuxtLink class="nav" to="/berita">Berita </NuxtLink>
             <NuxtLink class="nav" to="/artikel">Artikel </NuxtLink>
             <NuxtLink class="nav" to="/galeri">Galeri </NuxtLink>
@@ -50,6 +51,14 @@
         label: "Home",
         icon: "i-heroicons-home-20-solid",
         to: "/",
+        activeClass: "border-merah border ",
+      },
+    ],
+    [
+      {
+        label: "Guru",
+        icon: "i-heroicons-user-20-solid",
+        to: "/guru",
         activeClass: "border-merah border ",
       },
     ],

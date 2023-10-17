@@ -2,7 +2,7 @@
   <UCard
     data-aos="fade-up"
     data-aos-anchor-placement="top-bottom"
-    class="hover:border-merah duration-100 border border-slate-200 dark:border-slate-800 dark:hover:border-merah">
+    class="hover:border-merah  border  border-slate-200 dark:border-slate-800 dark:hover:border-merah">
     <div v-editable="artikel">
       <div class="">
         <NuxtImg
@@ -33,7 +33,7 @@
     >
     <div class="pb-2 pt-4">
       <NuxtLink :to="'/' + slug" class="">
-        <h2 class="mb-2 text-lg line-clamp-3 tracking-tight leading-snug">
+        <h2 class="mb-2 text-lg md:text-2xl  line-clamp-3 leading-snug">
           {{ artikel.title }}
         </h2></NuxtLink
       >

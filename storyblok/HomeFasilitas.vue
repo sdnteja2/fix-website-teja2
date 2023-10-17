@@ -1,6 +1,7 @@
 <template>
   <div
     v-editable="blok"
+    :class="svgClass"
     class="max-w-[85rem] px-2 py-10 md:px-14 lg:py-14 mx-auto">
     <UCard>
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
@@ -16,7 +17,7 @@
             :pagination="{
               dynamicBullets: false,
             }"
-            :modules="[SwiperAutoplay,  SwiperEffectCreative, SwiperPagination]"
+            :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination]"
             :creative-effect="{
               prev: {
                 shadow: false,
@@ -29,7 +30,7 @@
             <SwiperSlide v-for="(image, index) in blok.image" :key="index">
               <NuxtImg
                 class="bg-cover rounded-md h-52 md:h-72 object-cover w-full"
-                :src="image.filename "
+                :src="image.filename"
                 alt="Fasilitas Sekolah" />
             </SwiperSlide>
           </Swiper>
@@ -57,7 +58,8 @@
   </div>
 </template>
 <script setup>
-  defineProps({ blok: Object });
+  const props = defineProps({ blok: Object });
+  const { svgClass } = useSvg(ref(props.blok));
 </script>
 <style>
   .swiper-pagination-bullet-active {

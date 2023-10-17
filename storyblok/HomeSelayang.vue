@@ -1,6 +1,6 @@
 <template>
   <!-- Testimonials -->
-<div class="relative overflow-hidden px-2 sm:px-14 py-20">
+<div :class="svgClass" class="relative overflow-hidden px-2 sm:px-14 py-20">
   <div class="max-w-[85rem] mx-auto">
     <UCard>
     <div class="lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
@@ -45,5 +45,6 @@
 </template>
 <script setup>
   const props = defineProps({ blok: Object });
+  const { svgClass } = useSvg(ref(props.blok));
   const resolvedRichText = computed(() => renderRichText(props.blok.sambutan));
 </script>

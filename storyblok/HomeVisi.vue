@@ -1,10 +1,14 @@
 <template>
-	<section class="my-8 relative px-2 sm:px-14  svgkanan  ">
-		<div class="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
-			<p>Visi</p>
-			<h2 class="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl ">"{{ blok.visi }}"</h2>
-		</div>
-		<UTabs
+  <section class="my-8 relative px-2 sm:px-14" :class="svgClass">
+    <div
+      class="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
+      <p>Visi</p>
+      <h2
+        class="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl">
+        "{{ blok.visi }}"
+      </h2>
+    </div>
+    <UTabs
       data-aos="fade-up"
       data-aos-anchor-placement="top-bottom"
       :items="items">
@@ -29,10 +33,11 @@
         </div>
       </template>
     </UTabs>
-	</section>
+  </section>
 </template>
 <script setup>
   const props = defineProps({ blok: Object });
+  const { svgClass } = useSvg(ref(props.blok));
   const resolvedRichText = computed(() => renderRichText(props.blok.misi));
   const resolvedRichText1 = computed(() => renderRichText(props.blok.tujuan));
   const items = [
