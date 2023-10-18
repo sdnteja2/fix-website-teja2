@@ -1,35 +1,30 @@
+import { NuxtLink } from '#ui-colors/components';
 <template>
   <footer
     class="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
     <!-- Grid -->
     <div class="text-center">
-      <div>
-        <a
-          class="flex-none text-xl font-semibold text-black dark:text-white"
-          href="#"
-          aria-label="Brand"
-          >Brand</a
-        >
+      <div class="w-full justify-center flex items-center">
+        <NuxtLink
+          class="flex-none text-xl font-semibold"
+          to="/"
+          aria-label="SDN Teja II"
+          ><Logo
+        /></NuxtLink>
       </div>
       <!-- End Col -->
       <div class="mt-3">
-        <p class="text-gray-500">
+        <p class="">
           We're part of the
-          <a
-            class="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400"
-            href="#"
-            >Htmlstream</a
-          >
+          <a class="font-semibold text-merah" href="#">Htmlstream</a>
           family.
         </p>
-        <p class="text-gray-500">
-          © Preline. 2022 Htmlstream. All rights reserved.
-        </p>
+        <p class="">© Preline. 2022 Htmlstream. All rights reserved.</p>
       </div>
       <!-- Social Brands -->
       <div class="mt-3 space-x-2">
         <a
-          class="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
+          class="inline-flex justify-center items-center w-10 h-10 text-center hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark: dark:hover:text-gray-200 dark:hover:bg-gray-800"
           href="#">
           <svg
             class="w-3.5 h-3.5"
@@ -43,7 +38,7 @@
           </svg>
         </a>
         <a
-          class="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
+          class="inline-flex justify-center items-center w-10 h-10 text-center hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark: dark:hover:text-gray-200 dark:hover:bg-gray-800"
           href="#">
           <svg
             class="w-3.5 h-3.5"
@@ -57,7 +52,7 @@
           </svg>
         </a>
         <a
-          class="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
+          class="inline-flex justify-center items-center w-10 h-10 text-center hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark: dark:hover:text-gray-200 dark:hover:bg-gray-800"
           href="#">
           <svg
             class="w-3.5 h-3.5"
@@ -71,7 +66,7 @@
           </svg>
         </a>
         <a
-          class="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
+          class="inline-flex justify-center items-center w-10 h-10 text-center hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark: dark:hover:text-gray-200 dark:hover:bg-gray-800"
           href="#">
           <svg
             class="w-3.5 h-3.5"
