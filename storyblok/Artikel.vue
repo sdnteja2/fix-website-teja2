@@ -30,7 +30,7 @@
               class="mt-3 text-3xl leading-tight md:text-4xl"
               itemprop="headline"
               title="Rise of Tailwind - A Utility First CSS Framework">
-              {{ story.name }}
+              {{ blok.title }}
             </h1>
           </template>
           <p>
@@ -49,17 +49,15 @@
         </UCard>
       </div>
     </div>
-    <!-- daftar isi -->
     <div class="sticky top-[4.1rem] my-8 w-full mx-auto md:w-4/5">
       <UDropdown
-        :ui="{ width: 'w-2/3' }"
+        :ui="{ width: 'w-2/3', popper: 'fixed w-full mx-auto md:w-5/6 left-1/2' }"
         class="w-full"
         :items="categoryItem"
-        :popper="{ placement: 'bottom-start' }">
+       >
         <UButton block color="merah" variant="soft" label="Daftar Isi" />
       </UDropdown>
     </div>
-    <!-- artikel -->
     <div class="w-full mx-auto md:w-4/5">
       <div
         v-html="resolvedRichText"
@@ -68,59 +66,29 @@
   </article>
 </template>
 <script setup>
+  import { ref, computed, onMounted, nextTick, watch } from "vue";
   const props = defineProps({ story: Object, blok: Object });
   const resolvedRichText = computed(() => renderRichText(props.blok.content));
-  const { slug } = useRoute().params;
-  const story = await useAsyncStoryblok(
-    slug && slug.length > 0 ? slug.join("/") : "artikel",
-    { version: "draft" }
-  );
-  const toc = ref([]);
-  onMounted(() => {
-    resolvedRichText.value = renderRichText(props.blok.content);
-    generateTOC();
-  });
-  const generateTOC = () => {
-    const headings = document.querySelectorAll(".prose span[id]");
-    const tocData = [];
-    headings.forEach((heading) => {
-      const id = `#${heading.id}`;
-      const text = heading.textContent;
-      // Assign a click event listener to each heading
-      heading.addEventListener("click", () => {
-        scrollToHeading(id);
-      });
-      tocData.push({
-        id,
-        text,
-      });
+  // Generate daftar isi
+  const headings = computed(() => {
+    const headings = props.blok.content.content.filter(
+      (section) => section.type === "heading" && section.attrs.level === 2
+    );
+    return headings.map((heading) => {
+      console.log(`id: ${heading.id}, text: ${heading.content[0].text}`);
+      return {
+        id: heading.content[0].marks[0].attrs.id,
+        text: heading.content[0].text,
+      };
     });
-    toc.value = tocData;
-    console.log("TOC Data:", tocData);
-  };
-  const scrollToHeading = (id) => {
-    const heading = $nuxt.$el.querySelector(`#${id}`);
-    if (heading) {
-      const offset = 100; // Sesuaikan offset yang diinginkan di sini
-      const scrollPosition = heading.offsetTop - offset;
-      window.scrollBy({ top: scrollPosition, behavior: "smooth" });
-    }
-  };
+  });
+  // Create categoryItem for dropdown
   const categoryItem = computed(() => {
-    const items = toc.value.map((heading) => [
+    return headings.value.map((heading) => [
       {
         label: heading.text,
-        to: heading.id,
+        to: "#" + heading.id,
       },
     ]);
-    return items;
   });
-  // const categoryItem = [
-  //   [
-  //     {
-  //       label: heading.text,
-  //       to: heading.id,
-  //     },
-  //   ],
-  // ];
 </script>

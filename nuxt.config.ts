@@ -97,24 +97,24 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
   },
-  routeRules: {
-    "/artikel/**": {
-      prerender: true,
-      swr: 60, // isr: true,
-    },
-    // "/gallery/**": {
-    //   prerender: true,
-    //   swr: 60, // isr: true,
-    // },
-    "/**": {
-      prerender: true,
-      swr: 60,
-      // isr: true,
-    },
-    "/": {
-      prerender: true,
-      swr: 60,
-      // isr: true,
-    },
-  },
+  // routeRules: {
+  //   "/artikel/**": {
+  //     prerender: true,
+  //     swr: 60, // isr: true,
+  //   },
+  //   // "/gallery/**": {
+  //   //   prerender: true,
+  //   //   swr: 60, // isr: true,
+  //   // },
+  //   "/**": {
+  //     prerender: true,
+  //     swr: 60,
+  //     // isr: true,
+  //   },
+  //   "/": {
+  //     prerender: true,
+  //     swr: 60,
+  //     // isr: true,
+  //   },
+  // },
 });
