@@ -8,10 +8,10 @@ export default defineNuxtConfig({
     "@nuxtjs/fontaine",
     "@nuxtseo/module",
     "nuxt-simple-robots",
-    'nuxt-schema-org',
-    'nuxt-og-image',
-    'nuxt-simple-sitemap',
-    'nuxt-swiper',
+    "nuxt-schema-org",
+    "nuxt-og-image",
+    "nuxt-simple-sitemap",
+    "nuxt-swiper",
     "nuxt-og-image",
     [
       "@storyblok/nuxt",
@@ -82,8 +82,8 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: {
-      name: 'page', // Nama transisi yang akan digunakan secara global
-      mode: 'out-in' // Mode transisi, dalam hal ini 'out-in'
+      name: "page", // Nama transisi yang akan digunakan secara global
+      mode: "out-in", // Mode transisi, dalam hal ini 'out-in'
     },
     head: {
       templateParams: {
@@ -95,9 +95,26 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: [
-        '/',
-      ]
-    }
-  }
+    },
+  },
+  routeRules: {
+    "/artikel/**": {
+      prerender: true,
+      swr: 60, // isr: true,
+    },
+    // "/gallery/**": {
+    //   prerender: true,
+    //   swr: 60, // isr: true,
+    // },
+    "/**": {
+      prerender: true,
+      swr: 60,
+      // isr: true,
+    },
+    "/": {
+      prerender: true,
+      // swr: 60,
+      isr: true,
+    },
+  },
 });
