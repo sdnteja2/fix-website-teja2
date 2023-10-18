@@ -1,11 +1,13 @@
 <template>
-  <div v-editable="blok">
-    <article
-      class="px-2 sm:px-14 py-16 mx-auto max-w-full"
+  <article
+    class="relative px-2 sm:px-14 py-16 mx-auto max-w-full"
+    v-editable="blok">
+    <div
+      class="w-full mx-auto md:w-4/5"
       itemid="#"
       itemscope
       itemtype="http://schema.org/BlogPosting">
-      <div class="w-full mx-auto mb-6 md:w-4/5">
+      <div class="">
         <UCard>
           <template #header>
             <div class="">
@@ -25,7 +27,7 @@
               }}</UBadge
             >
             <h1
-              class="mt-3 text-3xl  leading-tight md:text-4xl"
+              class="mt-3 text-3xl leading-tight md:text-4xl"
               itemprop="headline"
               title="Rise of Tailwind - A Utility First CSS Framework">
               {{ story.name }}
@@ -35,7 +37,7 @@
             {{ blok.description }}
           </p>
           <template #footer>
-            <div class="flex  space-x-2">
+            <div class="flex space-x-2">
               <UBadge
                 v-for="(kategori, index) in blok.kategori"
                 :key="index"
@@ -46,13 +48,24 @@
           </template>
         </UCard>
       </div>
-      <div class="w-full mx-auto md:w-4/5">
-        <div
-          v-html="resolvedRichText"
-          class="prose prose-slate p-2 max-w-full dark:prose-invert"></div>
-      </div>
-    </article>
-  </div>
+    </div>
+    <!-- daftar isi -->
+    <div class="sticky top-[4.1rem] my-8 w-full mx-auto md:w-4/5">
+      <UDropdown
+        :ui="{ width: 'w-2/3' }"
+        class="w-full"
+        :items="categoryItem"
+        :popper="{ placement: 'bottom-start' }">
+        <UButton block color="merah" variant="soft" label="Daftar Isi" />
+      </UDropdown>
+    </div>
+    <!-- artikel -->
+    <div class="w-full mx-auto md:w-4/5">
+      <div
+        v-html="resolvedRichText"
+        class="prose prose-slate p-2 max-w-full dark:prose-invert"></div>
+    </div>
+  </article>
 </template>
 <script setup>
   const props = defineProps({ story: Object, blok: Object });
@@ -62,4 +75,50 @@
     slug && slug.length > 0 ? slug.join("/") : "artikel",
     { version: "draft" }
   );
+  const toc = ref([]);
+  onMounted(() => {
+    resolvedRichText.value = renderRichText(props.blok.content);
+    generateTOC();
+  });
+  const generateTOC = () => {
+    const headings = document.querySelectorAll(".prose span[id]");
+    const tocData = [];
+    headings.forEach((heading) => {
+      const id =  `#${heading.id}`;
+      const text = heading.textContent;
+      // Assign a click event listener to each heading
+      heading.addEventListener("click", () => {
+        scrollToHeading(id);
+      });
+      tocData.push({
+        id,
+        text,
+      });
+    });
+    toc.value = tocData;
+    console.log("TOC Data:", tocData);
+  };
+  const scrollToHeading = (id) => {
+    const heading = $nuxt.$el.querySelector(`#${id}`);
+    if (heading) {
+      heading.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const categoryItem = computed(() => {
+    const items = toc.value.map((heading) => [
+      {
+        label: heading.text,
+        to: heading.id,
+      },
+    ]);
+    return items;
+  });
+  // const categoryItem = [
+  //   [
+  //     {
+  //       label: heading.text,
+  //       to: heading.id,
+  //     },
+  //   ],
+  // ];
 </script>

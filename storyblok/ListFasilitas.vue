@@ -8,5 +8,4 @@
 </template>
 <script setup>
 const { blok } = defineProps(['blok']);
-const Iconname = `i-${blok.lambang.icon.replace(':', '-')}`;
 </script>
