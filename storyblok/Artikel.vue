@@ -84,7 +84,7 @@
     const headings = document.querySelectorAll(".prose span[id]");
     const tocData = [];
     headings.forEach((heading) => {
-      const id =  `#${heading.id}`;
+      const id = `#${heading.id}`;
       const text = heading.textContent;
       // Assign a click event listener to each heading
       heading.addEventListener("click", () => {
@@ -101,7 +101,9 @@
   const scrollToHeading = (id) => {
     const heading = $nuxt.$el.querySelector(`#${id}`);
     if (heading) {
-      heading.scrollIntoView({ behavior: "smooth" });
+      const offset = 100; // Sesuaikan offset yang diinginkan di sini
+      const scrollPosition = heading.offsetTop - offset;
+      window.scrollBy({ top: scrollPosition, behavior: "smooth" });
     }
   };
   const categoryItem = computed(() => {
