@@ -2,11 +2,13 @@
   <section class="my-8 relative px-2 sm:px-14" :class="svgClass">
     <div
       class="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
-      <p>Visi</p>
-      <h2
+      <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom">Visi</h2>
+      <h3
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
         class="px-6 py-2 text-2xl font-semibold text-center sm:font-bold sm:text-3xl md:text-4xl lg:max-w-2xl xl:max-w-4xl">
-        "{{ blok.visi }}"
-      </h2>
+        {{ blok.visi }}
+      </h3>
     </div>
     <UTabs
       data-aos="fade-up"
@@ -37,7 +39,10 @@
 </template>
 <script setup>
   const props = defineProps({ blok: Object });
-  const { svgClass } = useSvg(ref(props.blok));
+  const { svgClass } = useSvg(ref(props.blok), {
+    loading: "lazy",
+    alt: "Visi dan Misi",
+  });
   const resolvedRichText = computed(() => renderRichText(props.blok.misi));
   const resolvedRichText1 = computed(() => renderRichText(props.blok.tujuan));
   const items = [

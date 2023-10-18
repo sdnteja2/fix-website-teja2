@@ -49,19 +49,19 @@
         </UCard>
       </div>
     </div>
-    <div class="sticky top-[4.1rem] my-8 w-full mx-auto md:w-4/5">
+    <div class="sticky top-[4.05rem] my-8 w-full mx-auto md:w-4/5">
       <UDropdown
-        :ui="{ width: 'w-2/3', popper: 'fixed w-full mx-auto md:w-5/6 left-1/2' }"
+        :ui="{ width: 'w-2/3', popper: 'fixed w-full mx-auto left-1/2' }"
         class="w-full"
         :items="categoryItem"
        >
-        <UButton block color="merah" variant="soft" label="Daftar Isi" />
+        <UButton block color="merah" variant="solid" label="Daftar Isi" />
       </UDropdown>
     </div>
     <div class="w-full mx-auto md:w-4/5">
       <div
         v-html="resolvedRichText"
-        class="prose prose-slate p-2 max-w-full dark:prose-invert"></div>
+        class="prose prose-slate prose-img:mx-auto prose-img:h-96 prose-img:rounded-md prose-img:object-cover p-2 max-w-full dark:prose-invert"></div>
     </div>
   </article>
 </template>

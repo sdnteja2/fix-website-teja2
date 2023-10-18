@@ -11,7 +11,7 @@
             <div>
               <Logo />
             </div>
-            <h2>SDN Teja II</h2>
+            <div class="font-title dark:text-merah text-merah-600 font-black">SDN Teja II</div>
           </NuxtLink>
         </div>
         <div class="flex items-center">
