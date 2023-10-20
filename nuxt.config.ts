@@ -7,6 +7,8 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/fontaine",
     "nuxt-swiper",
+    "@vite-pwa/nuxt",
+    'nuxt-gtag',
     "nuxt-og-image",
     [
       "@storyblok/nuxt",
@@ -23,20 +25,21 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
   ],
   ogImage: { runtimeBrowser: true },
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GTAG_ID
+  },
   image: {
     storyblok: {
       baseURL: "https://a.storyblok.com",
     },
   },
-  css: [
-    '~/node_modules/lite-youtube-embed/src/lite-yt-embed.css',
-  ],
+  css: ["~/node_modules/lite-youtube-embed/src/lite-yt-embed.css"],
   build: {
-    transpile: ['lite-youtube'],
+    transpile: ["lite-youtube"],
   },
   vue: {
     compilerOptions: {
-      isCustomElement: tag => ['lite-youtube'].includes(tag),
+      isCustomElement: (tag) => ["lite-youtube"].includes(tag),
     },
   },
   ui: {
@@ -106,29 +109,65 @@ export default defineNuxtConfig({
       },
     },
   },
+  pwa: {
+    registerType: "autoUpdate",
+    manifest: {
+      name: "SDN Teja II",
+      short_name: "SDN Teja II",
+      theme_color: "#F22727",
+      icons: [
+        {
+          src: "icon-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "icon-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "icon-192-maskable.png",
+          sizes: "192x192",
+          type: "image/png",
+          purpose: "any maskable",
+        },
+        {
+          src: "icon-512-maskable.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any maskable",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/",
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+    },
+  },
   nitro: {
     prerender: {
       crawlLinks: true,
     },
   },
-  // routeRules: {
-  //   "/artikel/**": {
-  //     prerender: true,
-  //     swr: 60, // isr: true,
-  //   },
-  //   // "/gallery/**": {
-  //   //   prerender: true,
-  //   //   swr: 60, // isr: true,
-  //   // },
-  //   "/**": {
-  //     prerender: true,
-  //     swr: 60,
-  //     // isr: true,
-  //   },
-  //   "/": {
-  //     prerender: true,
-  //     swr: 60,
-  //     // isr: true,
-  //   },
-  // },
+  routeRules: {
+    // revalidated every 60 seconds, in the background
+    "/**": {
+      prerender: true,
+      isr: 60,
+    },
+    "/": {
+      prerender: true,
+      isr: 60,
+    },
+    "/artikel/**": {
+      prerender: true,
+      isr: 60, // isr: true,
+    },
+    "/berita/**": {
+      prerender: true,
+      isr: 60, // isr: true,
+    },
+    '/api/**': { cors: true },
+  },
 });

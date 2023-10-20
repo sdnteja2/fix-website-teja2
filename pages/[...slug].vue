@@ -29,6 +29,10 @@
     twitterTitle: () => title,
     twitterDescription: () => description,
     ogType: () => "website",
+    ogImageWidth: () => 1200,
+    ogImageHeight: () => 630,
+    ogImageAlt: () => title,
+    defineOgImage: () => true,
     ogSiteName: () => "SDN Teja 2",
   });
   defineOgImage({
@@ -40,7 +44,7 @@
     defineWebPage({
       name: () => title,
       description: () => description,
-      author:  "SDN Teja 2",
+      author: "SDN Teja 2",
       publisher: "SDN Teja 2",
     }),
   ]);
