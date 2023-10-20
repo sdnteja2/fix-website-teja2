@@ -22,9 +22,21 @@ export default defineNuxtConfig({
     "nuxt-seo-ui",
     "nuxt-simple-sitemap",
   ],
+  ogImage: { runtimeBrowser: true },
   image: {
     storyblok: {
       baseURL: "https://a.storyblok.com",
+    },
+  },
+  css: [
+    '~/node_modules/lite-youtube-embed/src/lite-yt-embed.css',
+  ],
+  build: {
+    transpile: ['lite-youtube'],
+  },
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => ['lite-youtube'].includes(tag),
     },
   },
   ui: {
