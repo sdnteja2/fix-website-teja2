@@ -1,21 +1,18 @@
 <template>
   <div class="text-center">
-    <img
+    <NuxtImg
       @click="isOpen = true"
       v-if="blok.foto?.filename"
-      class="rounded-md sm:h-48 lg:h-60 mx-auto object-cover bg-cover bg-center"
+      class="rounded-md sm:h-48 w-64 mx-auto object-cover bg-cover object-center bg-center"
       :src="blok.foto.filename + '/m/500x0/smart'"
       :alt="blok.nama"
       height="450"
-      width="230"
+      width="450"
       loading="lazy" />
     <div class="mt-2 sm:mt-4">
-      <h2 class="text-sm font-medium sm:text-base lg:text-lg">
-        {{ blok.nama }}
-      </h2>
-      <p class="text-xs sm:text-sm lg:text-base">
-        {{ blok.jabatan }}
-      </p>
+      <h3 class="text-sm font-medium sm:text-base lg:text-lg">
+        {{ blok.title }}
+      </h3>
     </div>
   </div>
   <UModal
@@ -39,16 +36,7 @@
           class="rounded-md object-cover bg-center" />
         <div class="text-center">
           <p class="text-base font-semibold leading-6">
-            {{ blok.nama }}
-          </p>
-          <p class="text-base font-semibold leading-6">
-            {{ blok.nip }}
-          </p>
-          <p class="text-base font-semibold leading-6">
-            {{ blok.jabatan }}
-          </p>
-          <p class="text-base font-semibold leading-6">
-            {{ blok.pendidikan }}
+            {{ blok.title }}
           </p>
         </div>
       </div>
