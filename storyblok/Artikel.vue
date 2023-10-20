@@ -86,8 +86,11 @@
     twitterDescription: () => description,
     twitterCard: () => "summary_large_image",
     ogType: () => "website",
+    ogImageUrl: () =>
+      "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
     ogSiteName: () => "SDN Teja 2",
-    twitterImage: "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
+    twitterImage: () =>
+      "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
   });
   defineOgImage({
     component: "OgTemplate",
