@@ -2,6 +2,7 @@
   <article
     class="relative px-2 sm:px-14 py-16 mx-auto max-w-full"
     v-editable="blok">
+    <!-- <SBreadcrumb :items="items" :ui="ui" /> -->
     <div
       class="w-full mx-auto md:w-4/5"
       itemid="#"
@@ -53,8 +54,7 @@
       <UDropdown
         :ui="{ width: 'w-2/3', popper: 'fixed w-full mx-auto left-1/2' }"
         class="w-full"
-        :items="categoryItem"
-       >
+        :items="categoryItem">
         <UButton block color="merah" variant="solid" label="Daftar Isi" />
       </UDropdown>
     </div>
@@ -66,9 +66,53 @@
   </article>
 </template>
 <script setup>
-  import { ref, computed, onMounted, nextTick, watch } from "vue";
+  const { slug } = useRoute().params;
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/stories", {
+    version: "draft",
+    starts_with: "artikel",
+    is_startpage: false,
+  });
   const props = defineProps({ story: Object, blok: Object });
   const resolvedRichText = computed(() => renderRichText(props.blok.content));
+  const title = props.blok.title;
+  const description = props.blok.description;
+  useServerSeoMeta({
+    title: () => title,
+    ogTitle: () => title,
+    description: () => description,
+    ogDescription: () => description,
+    twitterTitle: () => title,
+    twitterDescription: () => description,
+    twitterCard: () => "summary_large_image",
+    ogType: () => "website",
+    ogSiteName: () => "SDN Teja 2",
+    twitterImage: () => props.blok.image.filename + "/m/1600x0",
+  });
+  defineOgImage({
+    component: "OgTemplate",
+    title: title,
+    description: description,
+    image: props.blok.image.filename + "/m/1600x0",
+  });
+  useSchemaOrg([
+    defineWebPage({
+      name: () => title,
+      description: () => description,
+      author: "SDN Teja 2",
+      publisher: "SDN Teja 2",
+    }),
+    defineArticle({
+      headline: () => title,
+      description: () => description,
+      image: () => props.blok.image.filename + "/m/1600x0",
+      // attaching an author when the identity is an organization
+      author: {
+        name: "sdnteja2",
+        url: "https://harlanzw.com",
+      },
+    }),
+  ]);
   // Generate daftar isi
   const headings = computed(() => {
     const headings = props.blok.content.content.filter(

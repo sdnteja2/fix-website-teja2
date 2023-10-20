@@ -6,11 +6,6 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/google-fonts",
     "@nuxtjs/fontaine",
-    "@nuxtseo/module",
-    "nuxt-simple-robots",
-    "nuxt-schema-org",
-    "nuxt-og-image",
-    "nuxt-simple-sitemap",
     "nuxt-swiper",
     "nuxt-og-image",
     [
@@ -19,6 +14,13 @@ export default defineNuxtConfig({
         accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
       },
     ],
+    // seo-module
+    "@nuxtseo/module",
+    "nuxt-simple-robots",
+    "nuxt-schema-org",
+    "nuxt-og-image",
+    "nuxt-seo-ui",
+    "nuxt-simple-sitemap",
   ],
   image: {
     storyblok: {
