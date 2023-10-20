@@ -84,13 +84,7 @@
     ogDescription: () => description,
     twitterTitle: () => title,
     twitterDescription: () => description,
-    twitterCard: () => "summary_large_image",
-    ogType: () => "website",
-    ogImageUrl: () =>
-      "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
-    ogSiteName: () => "SDN Teja 2",
-    twitterImage: () =>
-      "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
+    ogType: () => "article",
   });
   defineOgImage({
     component: "OgTemplate",
@@ -107,8 +101,6 @@
     defineArticle({
       headline: () => title,
       description: () => description,
-      image: "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
-      // attaching an author when the identity is an organization
       author: {
         name: "sdnteja2",
       },

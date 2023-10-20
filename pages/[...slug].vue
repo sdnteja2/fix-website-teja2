@@ -28,7 +28,6 @@
     themeColor: () => "#F22727",
     twitterTitle: () => title,
     twitterDescription: () => description,
-    twitterCard: () => "summary_large_image",
     ogType: () => "website",
     ogSiteName: () => "SDN Teja 2",
   });
