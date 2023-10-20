@@ -61,7 +61,7 @@
     <div class="w-full mx-auto md:w-4/5">
       <div
         v-html="resolvedRichText"
-        class="prose prose-slate prose-img:mx-auto prose-img:h-96 prose-img:rounded-md prose-img:object-cover p-2 max-w-full dark:prose-invert"></div>
+        class="prose prose-slate prose-img:mx-auto prose-img:h-96 prose-img:w-40 prose-img:rounded-md prose-img:object-cover p-2 max-w-full dark:prose-invert"></div>
     </div>
   </article>
 </template>
@@ -87,13 +87,12 @@
     twitterCard: () => "summary_large_image",
     ogType: () => "website",
     ogSiteName: () => "SDN Teja 2",
-    twitterImage: () => props.blok.image.filename + "/m/1600x0",
+    twitterImage: "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
   });
   defineOgImage({
     component: "OgTemplate",
     title: title,
     description: description,
-    image: props.blok.image.filename + "/m/1600x0",
   });
   useSchemaOrg([
     defineWebPage({
@@ -105,11 +104,10 @@
     defineArticle({
       headline: () => title,
       description: () => description,
-      image: () => props.blok.image.filename + "/m/1600x0",
+      image: "https://sdnteja2.sch.id/artikel/${slug}/__og_image__/og.png",
       // attaching an author when the identity is an organization
       author: {
         name: "sdnteja2",
-        url: "https://harlanzw.com",
       },
     }),
   ]);

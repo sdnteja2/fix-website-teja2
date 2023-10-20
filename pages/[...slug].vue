@@ -20,6 +20,7 @@
       ? metadata.description
       : defaultDescription;
   useServerSeoMeta({
+    canonical: () => "https://sdnteja2.sch.id/" + story.value.content.full_slug,
     title: () => title,
     ogTitle: () => title,
     description: () => description,
