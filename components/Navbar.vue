@@ -2,7 +2,12 @@
   <nav>
     <div class="fixed w-full z-50 top-0">
       <div
-        class="dark:bg-gray-900 h-16 px-1 sm:px-12 bg-gray-100 shadow backdrop-blur-md bg-opacity-75 p-2 justify-between flex items-center dark:bg-opacity-75 w-full">
+        :class="[
+          'dark:bg-slate-900',
+          'h-16',
+          'px-1 sm:px-12',
+          'bg-slate-100 shadow backdrop-blur-md bg-opacity-75 p-2 justify-between flex items-center dark:bg-opacity-75 w-full',
+        ]">
         <div>
           <NuxtLink
             aria-label="logo"
@@ -11,11 +16,19 @@
             <div>
               <Logo />
             </div>
-            <div class="font-title dark:text-merah text-merah-600 font-black">SDN Teja II</div>
+            <div
+              :class="{
+                'font-title': true,
+                'dark:text-merah': true,
+                'text-merah-600': true,
+                'font-black': true,
+              }">
+              SDN Teja II
+            </div>
           </NuxtLink>
         </div>
         <div class="flex items-center">
-          <div class="sm:block hidden space-x-2 mr-4">
+          <div :class="['sm:block hidden space-x-2 mr-4']">
             <NuxtLink class="nav" to="/">Home </NuxtLink>
             <NuxtLink class="nav" to="/guru">Guru </NuxtLink>
             <NuxtLink class="nav" to="/berita">Berita </NuxtLink>

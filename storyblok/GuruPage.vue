@@ -5,7 +5,7 @@
         <div class="mt-5 max-w-2xl text-center mx-auto">
           <h1
             v-editable="blok"
-            class="block headline text-4xl md:text-5xl lg:text-6xl">
+            class="block headline text-xl md:text-5xl ">
             {{ blok.headline }}
           </h1>
         </div>

@@ -1,6 +1,10 @@
 <template>
-  <div class="text-center">
+  <div
+    data-aos="fade-up"
+    data-aos-anchor-placement="top-bottom"
+    class="text-center">
     <img
+      v-editable="berita"
       @click="isOpen = true"
       v-if="blok.foto?.filename"
       class="rounded-md sm:h-48 lg:h-60 mx-auto object-cover bg-cover bg-center"

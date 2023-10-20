@@ -13,13 +13,16 @@
         :start="blok.start ? blok.start : 0" />
       <template #footer>
         <div class="mb-2">
-          <h3 class=" md:text-lg font-medium leading-snug tracking-tight">
+          <h3 class="md:text-lg font-medium leading-snug tracking-tight">
             {{ blok.title }}
           </h3>
         </div>
         <p class="text-sm">
-          Sumber: <span class="font-bold ">
-            {{ blok.sumber }}
+          Sumber:
+          <span class="font-bold">
+            <NuxtLink :to="blok.url_sumber" target="isBlank">
+              {{ blok.sumber }}
+            </NuxtLink>
           </span>
         </p>
       </template>

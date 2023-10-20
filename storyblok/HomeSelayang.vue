@@ -1,7 +1,10 @@
 <template>
   <!-- Testimonials -->
   <div :class="svgClass" class="relative overflow-hidden px-2 sm:px-14 py-20">
-    <div class="max-w-[85rem] mx-auto">
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+      class="max-w-[85rem] mx-auto">
       <UCard>
         <div class="lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
           <div class="hidden justify-center lg:flex lg:col-span-2">

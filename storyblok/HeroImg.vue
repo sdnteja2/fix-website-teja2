@@ -2,7 +2,7 @@
   <section
     data-aos="fade-up"
     data-aos-anchor-placement="top-bottom"
-    class="px-2 relative overflow-hidden before:absolute before:top-0 before:bg-[url('/yes.svg')] before:bg-no-repeat before:bg-top md:before:bg-cover before:bg-contain before:w-full before:h-full before:-z-[1] before:transform md:px-14 h-screen items-center justify-center flex -mt-16">
+    class="px-2 pt-20 relative overflow-hidden before:absolute before:top-0 before:bg-[url('/yes.svg')] before:bg-no-repeat before:bg-top md:before:bg-cover before:bg-contain before:w-full before:h-full before:-z-[1] before:transform md:px-14 items-center justify-center flex -mt-16">
     <div v-editable="blok" class="w-full flex flex-col md:flex-row">
       <div
         class="w-full md:justify-start md:w-1/2 items-center justify-center flex">
@@ -21,15 +21,14 @@
         </div>
       </div>
       <div
-        class="w-full md:w-1/2 items-center justify-center flex h-64 lg:h-96">
-        <img
+        class="w-full md:w-1/2 items-center justify-center flex h-64 lg:h-72">
+        <NuxtImg
           loading="lazy"
           title="SDN Teja II"
           class="h-full w-full object-contain bg-cover rounded-md bg-center"
           height="500"
           width="360"
-          alt="SDN Teja II"
-          fit="in"
+          alt="Gambar SDN Teja II"
           :src="blok.image.filename + '/m/1000x0'" />
       </div>
     </div>
