@@ -140,10 +140,10 @@ export default defineNuxtConfig({
         },
       ],
     },
-    // workbox: {
-    //   navigateFallback: "/",
-    //   globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-    // },
+    workbox: {
+      navigateFallback: "/",
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+    },
   },
   nitro: {
     prerender: {
