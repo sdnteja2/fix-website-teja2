@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     "@nuxtjs/fontaine",
     "nuxt-swiper",
     "@vite-pwa/nuxt",
-    'nuxt-gtag',
+    "nuxt-gtag",
     "nuxt-og-image",
     [
       "@storyblok/nuxt",
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   ],
   ogImage: { runtimeBrowser: true },
   gtag: {
-    id: process.env.NUXT_PUBLIC_GTAG_ID
+    id: process.env.NUXT_PUBLIC_GTAG_ID,
   },
   image: {
     storyblok: {
@@ -140,10 +140,10 @@ export default defineNuxtConfig({
         },
       ],
     },
-    workbox: {
-      navigateFallback: "/",
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-    },
+    // workbox: {
+    //   navigateFallback: "/",
+    //   globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+    // },
   },
   nitro: {
     prerender: {
@@ -154,20 +154,25 @@ export default defineNuxtConfig({
     // revalidated every 60 seconds, in the background
     "/**": {
       prerender: true,
-      isr: 60,
+      // isr: 60,
+      swr: 60 * 10,
     },
     "/": {
       prerender: true,
-      isr: 60,
+      swr: 60 * 10,
+      // isr: 60,
     },
     "/artikel/**": {
+      swr: 60 * 10,
       prerender: true,
-      isr: 60, // isr: true,
+      // isr: 60, // isr: true,
     },
     "/berita/**": {
+      swr: 60 * 10,
       prerender: true,
-      isr: 60, // isr: true,
+      // isr: 60, // isr: true,
     },
-    '/api/**': { cors: true },
+    // swr: 60 * 10,
+    "/api/**": { cors: true },
   },
 });
